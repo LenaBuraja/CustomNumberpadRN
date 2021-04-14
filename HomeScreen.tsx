@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import { Keypad } from './NumberKeypad/Keypad';
 
 export default function HomeScreen() {
   const [goodQty, setGoodQty] = useState<string>('1');
@@ -33,7 +34,7 @@ export default function HomeScreen() {
 
       { isMyKeyboardVisible &&
           <View style={{height: 200, width: '100%', backgroundColor: "#DDDDDD"}}>
-            <Text>My keyboard</Text>
+            <Keypad />
           </View>
       }
     </KeyboardAvoidingView>
