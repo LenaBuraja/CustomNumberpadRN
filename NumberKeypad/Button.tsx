@@ -1,16 +1,15 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Colors } from 'react-native-paper';
 
-const Button = ({ title, grow, operation/*, onPress*/ }: { title: string, grow?: number, operation?: boolean/*, onPress: () => void */}) => {
+const Button = ({ title, grow = 1, operation, onPress }: { title: string, grow?: number, operation?: boolean, onPress: () => void }) => {
   return (
-    <View style={[styles.container, { flexGrow: grow || 1 }]}>
 		<TouchableOpacity
-			onPress={() => {console.log(title); /*onPress();*/}}
+			onPress={() => {onPress();}}
+      style={[styles.container, { flexGrow: grow, paddingLeft: grow > 1 ? grow : 0 }]}
 		>
 			<Text style={[ styles.text, {color: operation ? Colors.blue600 : Colors.black}]}>{title}</Text>
 		</TouchableOpacity>
-    </View>
   );
 };
 
@@ -22,9 +21,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-	 borderColor: Colors.grey300,
-	 borderWidth: 1,
-	 //height: '25%',
+    margin: 1,
   },
   text: {
 	  fontSize: 25,
